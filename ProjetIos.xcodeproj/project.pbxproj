@@ -10,6 +10,7 @@
 		31274D752399AE4E009793C4 /* detailsMyPartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31274D742399AE4E009793C4 /* detailsMyPartsViewController.swift */; };
 		313545832390ED44007E9845 /* AddPartsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313545822390ED44007E9845 /* AddPartsController.swift */; };
 		314D817A23CCDF960043B938 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314D817923CCDF960043B938 /* ProfileEditViewController.swift */; };
+		31E675C023CEC60D00D1F1AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31E675BF23CEC60C00D1F1AA /* GoogleService-Info.plist */; };
 		31EB31F2238F035F000D4653 /* Profile2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EB31F1238F035F000D4653 /* Profile2Controller.swift */; };
 		31EB31F4238F0E06000D4653 /* ListPartsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EB31F3238F0E06000D4653 /* ListPartsController.swift */; };
 		31ED29192390293600DA56BC /* MyCartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ED29182390293600DA56BC /* MyCartController.swift */; };
@@ -65,6 +66,7 @@
 		31274D742399AE4E009793C4 /* detailsMyPartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailsMyPartsViewController.swift; sourceTree = "<group>"; };
 		313545822390ED44007E9845 /* AddPartsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPartsController.swift; sourceTree = "<group>"; };
 		314D817923CCDF960043B938 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
+		31E675BF23CEC60C00D1F1AA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		31EB31F1238F035F000D4653 /* Profile2Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile2Controller.swift; sourceTree = "<group>"; };
 		31EB31F3238F0E06000D4653 /* ListPartsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPartsController.swift; sourceTree = "<group>"; };
 		31ED29182390293600DA56BC /* MyCartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCartController.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				31F2A9AF2386F58500C52FD6 /* LaunchScreen.storyboard */,
 				31F2A9B22386F58500C52FD6 /* Info.plist */,
 				31F2A9AA2386F58200C52FD6 /* ProjetIos.xcdatamodeld */,
+				31E675BF23CEC60C00D1F1AA /* GoogleService-Info.plist */,
 				31F65DB5238764CA003B1CE1 /* HomeController.swift */,
 				31F65DB7238765F9003B1CE1 /* FavoriteController.swift */,
 				31F65DB92387660E003B1CE1 /* SettingsController.swift */,
@@ -307,6 +310,11 @@
 				TargetAttributes = {
 					31F2A99F2386F58200C52FD6 = {
 						CreatedOnToolsVersion = 10.3;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					31F2A9B62386F58500C52FD6 = {
 						CreatedOnToolsVersion = 10.3;
@@ -344,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31F2A9B12386F58500C52FD6 /* LaunchScreen.storyboard in Resources */,
+				31E675C023CEC60D00D1F1AA /* GoogleService-Info.plist in Resources */,
 				31F2A9AE2386F58500C52FD6 /* Assets.xcassets in Resources */,
 				31F2A9A92386F58200C52FD6 /* Main.storyboard in Resources */,
 			);

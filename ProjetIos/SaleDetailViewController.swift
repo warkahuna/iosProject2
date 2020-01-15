@@ -32,6 +32,7 @@ class SaleDetailsViewController: UIViewController ,UITableViewDataSource,UITable
     @IBOutlet weak var comment: UITableView!
     @IBOutlet weak var vues: UILabel!
     @IBOutlet weak var text: UITextField!
+    @IBOutlet weak var image: UIImageView!
     
     
     override func viewDidLoad() {
@@ -75,6 +76,13 @@ class SaleDetailsViewController: UIViewController ,UITableViewDataSource,UITable
         getComments(dealId: result["idparts"] as! Int)
         updateViews(idParts: result["idparts"] as! Int)
         vues.text = String(result["vues"] as! Int+1)
+        
+        if (result["String_image"] as! String) != nil && (result["String_image"] as! String) != ""{
+            let dataDecoded : Data = Data(base64Encoded: result["String_image"] as! String, options: .ignoreUnknownCharacters)!
+            let decodedimage = UIImage(data: dataDecoded)
+            image.image = decodedimage
+        }
+        
     }
     
     

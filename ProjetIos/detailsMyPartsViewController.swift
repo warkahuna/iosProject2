@@ -62,10 +62,11 @@ class detailsMyPartsViewController: UIViewController,UIPickerViewDataSource,UIPi
         other2Content.text = content2![1]
         other3Content.text = content3![1]
         
-        /*let dataDecoded : Data = Data(base64Encoded:
-            result["String_image"] as! String, options: .ignoreUnknownCharacters)!
+        if (result["String_image"] as! String) != nil && (result["String_image"] as! String) != ""{
+        let dataDecoded : Data = Data(base64Encoded: result["String_image"] as! String, options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
-        image.image = decodedimage*/
+        image.image = decodedimage
+        }
         //price.text = String(result["Price"] as! Int)
         // Do any additional setup after loading the view.
     }

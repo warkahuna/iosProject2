@@ -88,6 +88,7 @@ class ProfileController: UIViewController {
             {
               UserDefaults.standard.set(mail.text!, forKey: "user")
                 self.dismiss(animated: true, completion: nil)
+                performSegue(withIdentifier: "toMyProfile", sender: self)
             }
             else if userVerification["success"] as! String == "Username does not exits"
             {

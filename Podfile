@@ -8,6 +8,8 @@ pod 'Alamofire-SwiftyJSON'
 pod 'DateToolsSwift'
 pod 'FacebookCore'
 pod 'FacebookLogin'
+pod 'Firebase/Core'
+pod 'Firebase/Messaging'
 
   target 'ProjetIosTests' do
     inherit! :search_paths

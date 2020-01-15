@@ -15,6 +15,8 @@ import FacebookCore
 class HomeController: UIViewController,UITableViewDataSource,UITableViewDelegate{
     
     @IBOutlet weak var carParts: UITableView!
+    @IBOutlet var search: UISearchBar!
+    @IBOutlet var searched: UITextField!
     
     
     var carsParts:NSArray = []
@@ -140,9 +142,30 @@ class HomeController: UIViewController,UITableViewDataSource,UITableViewDelegate
             self.carParts.reloadData()
          }
         }
+    func searchParts(){
+        
+       Alamofire.request( Server.ip+"api/parts/searchSell",method: .post, parameters:["search" : searched.text!],encoding: JSONEncoding.default ) .responseJSON{ response in
+            print(response)
+        if let arrayVersion = response.result.value as? NSArray
+        {
+            self.carsParts = response.result.value as! NSArray
+            self.carParts.reloadData()
+        }
+        else if let dictionaryVersion = response.result.value as? NSDictionary
+        {
+            self.part2 = response.result.value as! Dictionary<String,Any>
+            
+            self.carParts.reloadData()
+        }
+        }
+    }
     
     
-
+    @IBAction func searching(_ sender: Any) {
+        searchParts()
+    }
+    
+    
     /*@IBAction func bider(_ sender: Any) {
         let bids: UIButton = sender as! UIButton;
 
