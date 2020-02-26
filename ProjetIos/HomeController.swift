@@ -158,6 +158,8 @@ class HomeController: UIViewController,UITableViewDataSource,UITableViewDelegate
             self.part2 = response.result.value as! Dictionary<String,Any>
             
             self.carParts.reloadData()
+            if(response.result.value == nil)
+            {print("hello")}
         }
         }
     }
