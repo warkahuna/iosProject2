@@ -33,7 +33,8 @@ class SaleDetailsViewController: UIViewController ,UITableViewDataSource,UITable
     @IBOutlet weak var vues: UILabel!
     @IBOutlet weak var text: UITextField!
     @IBOutlet weak var image: UIImageView!
-    
+
+    @IBOutlet weak var hideShowComment: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -218,10 +219,12 @@ class SaleDetailsViewController: UIViewController ,UITableViewDataSource,UITable
         if comment.isHidden == true
         {
             comment.isHidden = false
+            hideShowComment.setTitle("Hide comments", for: .normal)
         }
         else
         {
             comment.isHidden = true
+            hideShowComment.setTitle("Show comments", for: .normal)
         }
     }
     @IBAction func postComment(_ sender: Any) {
@@ -236,6 +239,7 @@ class SaleDetailsViewController: UIViewController ,UITableViewDataSource,UITable
         
         Alamofire.request( Server.ip+"api/comments/addComment",method: .post, parameters:param,encoding: JSONEncoding.default ) .responseJSON{ response in
             print(response)
+            self.getComments(dealId: self.result["idparts"] as! Int)
             self.comment.reloadData()
         }
     }

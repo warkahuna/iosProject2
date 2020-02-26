@@ -8,6 +8,8 @@
 
 import UIKit
 import Alamofire
+import DateToolsSwift
+
 class detailsMyPartsViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
 
     var result:Dictionary<String,Any> = [:]
@@ -26,8 +28,12 @@ class detailsMyPartsViewController: UIViewController,UIPickerViewDataSource,UIPi
     @IBOutlet weak var sellingSwitch: UISwitch!
     @IBOutlet weak var selling: UIButton!
     @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var creationDate: UILabel!
+    @IBOutlet weak var nbComment: UILabel!
+    @IBOutlet weak var vues: UILabel!
+    @IBOutlet weak var available: UILabel!
     
-    let types = ["Brakes","Exhaust"]
+    let types = ["Brakes","Exhaust","Filtering/oil","Suspension and stearing","Transmission-Gearbox","Exterieur/Enterieur Equipment and Accessories","Exhaust","Electrical and lighting","Air conditioning","Locks-closure","Tyres","Others"]
     var type:String = "Brakes"
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -67,11 +73,24 @@ class detailsMyPartsViewController: UIViewController,UIPickerViewDataSource,UIPi
         let decodedimage = UIImage(data: dataDecoded)
         image.image = decodedimage
         }
+        
+       
+        creationDate.text = timeAgo(date: result["sellable_date"] as! String)
+        nbComment.text = String(0)
+        vues.text = String(result["vues"] as! Int)
+        available.text = result["state"] as! String
         //price.text = String(result["Price"] as! Int)
         // Do any additional setup after loading the view.
     }
     
-    
+    func timeAgo(date:String) -> String
+    {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let date = formatter.date(from: date)
+        return date!.timeAgoSinceNow
+    }
     @IBAction func sellSwitch(_ sender: UISwitch) {
         if sender.isOn
         {

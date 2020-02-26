@@ -36,10 +36,11 @@ class ListPartsController: UIViewController ,UITableViewDataSource,UITableViewDe
         let result = myParts[indexPath.row] as! Dictionary<String,Any>
         partsName.text = result["name"] as! String
         startingPrice.text =  result["Type"] as! String
-        //finalPrice.text = String(result["Final_Price"] as! Int)+"$"
-        /*let dataDecoded : Data = Data(base64Encoded: result["String_image"] as! String, options: .ignoreUnknownCharacters)!
-        let decodedimage = UIImage(data: dataDecoded)
-        image.image = decodedimage*/
+        if (result["String_image"] as! String) != nil && (result["String_image"] as! String) != ""{
+            let dataDecoded : Data = Data(base64Encoded: result["String_image"] as! String, options: .ignoreUnknownCharacters)!
+            let decodedimage = UIImage(data: dataDecoded)
+            image.image = decodedimage
+        }
         return cell!
     }
     
@@ -114,7 +115,8 @@ fetchMyParts()
     
     
     func fetchMyParts(){
-        Alamofire.request( Server.ip+"api/parts/getPartsIduser",method: .post, parameters:["username" : UserDefaults.standard.string(forKey: "user")],encoding: JSONEncoding.default ) .responseJSON{ response in
+        Alamofire.request( Server.ip+"api/parts/myparts",method: .post, parameters:["username" : UserDefaults.standard.string(forKey: "user")],encoding: JSONEncoding.default ) .responseJSON{ response in
+            
             if let arrayVersion = response.result.value as? NSArray
             {
             self.myParts = response.result.value as! NSArray

@@ -129,7 +129,7 @@ class HomeController: UIViewController,UITableViewDataSource,UITableViewDelegate
         super.viewDidLoad()
         
         fetchParts()
-        
+        //UserDefaults.standard.removeObject(forKey: "user")
         // Do any additional setup after loading the view.
     }
     
@@ -137,14 +137,16 @@ class HomeController: UIViewController,UITableViewDataSource,UITableViewDelegate
     func fetchParts(){
         
         Alamofire.request(Server.ip+"api/parts/getSells").responseJSON{ response in
-           
+            if let arrayVersion = response.result.value as? NSArray
+            {
             self.carsParts = response.result.value as! NSArray
             self.carParts.reloadData()
+            }
          }
         }
     func searchParts(){
         
-       Alamofire.request( Server.ip+"api/parts/searchSell",method: .post, parameters:["search" : searched.text!],encoding: JSONEncoding.default ) .responseJSON{ response in
+       Alamofire.request( Server.ip+"api/parts/searchSell",method: .post, parameters:["search" : "%"+searched.text!+"%"],encoding: JSONEncoding.default ) .responseJSON{ response in
             print(response)
         if let arrayVersion = response.result.value as? NSArray
         {

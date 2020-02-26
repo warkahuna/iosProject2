@@ -53,9 +53,11 @@ class Profile2Controller: UIViewController,UITableViewDataSource,UITableViewDele
         partsName.text = result["name"] as! String
         category.text =  result["Type"] as! String
         
-       /* let dataDecoded : Data = Data(base64Encoded: result["String_image"] as! String, options: .ignoreUnknownCharacters)!
-        let decodedimage = UIImage(data: dataDecoded)
-        image.image = decodedimage*/
+        if (result["String_image"]) != nil && (result["String_image"] as! String) != ""{
+            let dataDecoded : Data = Data(base64Encoded: result["String_image"] as! String, options: .ignoreUnknownCharacters)!
+            let decodedimage = UIImage(data: dataDecoded)
+            image.image = decodedimage
+        }
         
         return cell!
     }
@@ -103,7 +105,7 @@ class Profile2Controller: UIViewController,UITableViewDataSource,UITableViewDele
     }
     
     func fetchMyParts(){
-            Alamofire.request( Server.ip+"api/parts/getPartsIduser",method: .post, parameters:["username" : UserDefaults.standard.string(forKey: "user")],encoding: JSONEncoding.default ) .responseJSON{ response in
+            Alamofire.request( Server.ip+"api/parts/myparts",method: .post, parameters:["username" : UserDefaults.standard.string(forKey: "user")],encoding: JSONEncoding.default ) .responseJSON{ response in
                 
                 //print(response)
                 if let arrayVersion = response.result.value as? NSArray

@@ -16,6 +16,8 @@ class ProfileController: UIViewController {
     
     @IBOutlet weak var mail: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var LogInVerificationMessage: UILabel!
+    @IBOutlet weak var loginText: UILabel!
     
     var user:NSArray = []
     var userVerification:Dictionary<String,Any> = [:]
@@ -28,7 +30,7 @@ class ProfileController: UIViewController {
         let loginButton = FBLoginButton(permissions: [ .publicProfile,.email ])
         loginButton.center = view.center
         
-        view.addSubview(loginButton)
+        //view.addSubview(loginButton)
         
         if let accessToken = AccessToken.current {
             GraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).start(completionHandler:
@@ -84,23 +86,7 @@ class ProfileController: UIViewController {
         if mail.text != "" && password.text != ""
         { 
             userLogin(userName: mail.text! , password: password.text!)
-            if userVerification["success"] as? String == nil
-            {
-              UserDefaults.standard.set(mail.text!, forKey: "user")
-                self.dismiss(animated: true, completion: nil)
-                performSegue(withIdentifier: "toMyProfile", sender: self)
-            }
-            else if userVerification["success"] as! String == "Username does not exits"
-            {
-                print("user not exist")
-            }
-            else if userVerification["success"] as! String == "Username and password does not match"
-            {
-                print("password false")
-            }
-        }
-        else
-        {
+            //print(self.userVerification)
             
         }
         
@@ -130,6 +116,41 @@ class ProfileController: UIViewController {
             else if let dictionaryVersion = response.result.value as? NSDictionary
             {
                 self.userVerification = response.result.value as! Dictionary<String,Any>
+                print(self.userVerification)
+                if self.userVerification["message"] != nil
+                {
+                    if self.userVerification["message"] as! String == "JSON Data received successfully"
+                    {
+                        UserDefaults.standard.set(self.mail.text!, forKey: "user")
+                        self.dismiss(animated: true, completion: nil)
+                        self.performSegue(withIdentifier: "toMyProfile", sender: self)
+                    }
+                }
+                else if self.userVerification["success"] != nil
+                {
+                    if self.userVerification["success"] as! String == "Username does not exits"
+                    {
+                        print("user not exist")
+                        self.LogInVerificationMessage.text = "mail does not exist"
+                        self.LogInVerificationMessage.isHidden = false
+                        self.loginText.textColor = UIColor.red
+                    }
+                    else if self.userVerification["success"] as! String == "Username and password does not match"
+                    {
+                        print("password false")
+                        self.LogInVerificationMessage.text = "wrong password/email"
+                        self.LogInVerificationMessage.isHidden = false
+                        self.loginText.textColor = UIColor.red
+
+                    }
+                }
+                else
+                {
+                    self.LogInVerificationMessage.text = "no connection available"
+                    self.LogInVerificationMessage.isHidden = false
+                    self.loginText.textColor = UIColor.red
+
+                }
             }
             
             

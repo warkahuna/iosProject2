@@ -21,9 +21,9 @@ class ContactViewController: UIViewController {
         super.viewDidLoad()
         getUser()
         
-        /*owner.text = "Contacting "+(user["username"] as! String)*/
-        partName.text = "Regarding the Deal named "+( info["name"] as! String)
-        partPrice.text = "Suggested Price by the onwer is "+( String(info["Price"] as! Double))
+        owner.text = "Contacting : "+(info["owner"] as! String)
+        partName.text = "Regarding the Deal named : "+( info["name"] as! String)
+        partPrice.text = "Suggested Price by the onwer is : "+( String(info["Price"] as! Double)+" TND")
         // Do any additional setup after loading the view.
     }
     
@@ -55,6 +55,14 @@ class ContactViewController: UIViewController {
             
             self.user = self.userInfo.firstObject as! Dictionary<String,Any>
     }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "backtToSalesDetailViewController"
+        {
+            let backtToSalesDetailViewController = segue.destination as! SaleDetailsViewController
+            
+            backtToSalesDetailViewController.result = info
+        }
     }
     /*
     // MARK: - Navigation
