@@ -44,11 +44,12 @@ class FavoriteController: UIViewController ,UITableViewDataSource,UITableViewDel
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            self.cars.remove(at: indexPath.row)
-            self.times.remove(at: indexPath.row)
-            self.prices.remove(at: indexPath.row)
+            print(indexPath.row)
+            cars.remove(at: indexPath.row)
+            times.remove(at: indexPath.row)
+            prices.remove(at: indexPath.row)
             removePart(id: ids[indexPath.row])
-            self.ids.remove(at: indexPath.row)
+            ids.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             
         }
@@ -75,17 +76,15 @@ class FavoriteController: UIViewController ,UITableViewDataSource,UITableViewDel
             do {
                 
                 for data in result as! [NSManagedObject] {
-                    cars.append(data.value(forKey: "name") as! String)
+                   if(data.value(forKey: "name") != nil && data.value(forKey: "price") != nil && data.value(forKey: "time") != nil && data.value(forKey: "id") != nil)
+                    {
+                        cars.append(data.value(forKey: "name") as! String)
                     prices.append(String(data.value(forKey: "price") as! Float))
                     times.append(data.value(forKey: "time") as! String)
                     ids.append(data.value(forKey: "id") as! Int)
-                    
+                    }
                 }
-                
             }
-            
-            
-            
         }catch let error as NSError{
             
             print(error.userInfo)
@@ -97,7 +96,7 @@ class FavoriteController: UIViewController ,UITableViewDataSource,UITableViewDel
         
         let persistentContainer = appDelegate.persistentContainer
         let managedContext = persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "favorite")
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Favorite")
         
         do{
             

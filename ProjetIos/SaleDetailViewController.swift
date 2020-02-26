@@ -148,6 +148,8 @@ class SaleDetailsViewController: UIViewController ,UITableViewDataSource,UITable
         
         let bidss = NSManagedObject(entity: BidEntityDescription!, insertInto: managedContext)
         
+       if(!checkExitingFavorite(id: result["idparts"] as! Int))
+       {
         bidss.setValue(result["idparts"] as! Int, forKey: "id")
         bidss.setValue(result["name"] as! String, forKey: "name")
         bidss.setValue(result["Price"] as! Double, forKey: "price")
@@ -171,8 +173,61 @@ class SaleDetailsViewController: UIViewController ,UITableViewDataSource,UITable
             
             print(error.userInfo)
         }
+      }
+        else
+       {
+        do{
+            
+            try  managedContext.save()
+            
+            let alert = UIAlertController(title: "favorite", message: "favorite already existant", preferredStyle: .alert)
+            
+            let action = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+            
+            alert.addAction(action)
+            
+            present(alert,animated: true,completion: nil)
+            
+            
+        }catch let error as NSError{
+            
+            print(error.userInfo)
+        }
+        }
     }
-    
+    func checkExitingFavorite(id:Int) -> Bool
+    {
+        var check = false
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let persistentContainer = appDelegate.persistentContainer
+        let managedContext = persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Favorite")
+        
+        do{
+        
+        let result = try managedContext.fetch(fetchRequest)
+        
+        do {
+        
+        for data in result as! [NSManagedObject] {
+        if data.value(forKey: "id") as! Int == id
+        {
+        check = true
+        }
+        
+        }
+        
+        }
+        }catch let error as NSError{
+        
+        print(error.userInfo)
+            check = false
+        
+        }
+        return check
+    }
+
     func getComments(dealId:Int)
     {
         Alamofire.request( Server.ip+"api/comments/getComments",method: .post, parameters:["dealid" : dealId],encoding: JSONEncoding.default ) .responseJSON{ response in
