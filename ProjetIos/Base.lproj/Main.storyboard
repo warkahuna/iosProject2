@@ -322,8 +322,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="suggested price" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3iu-Nt-BaA">
-                                        <rect key="frame" x="20" y="348" width="374" height="71"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="suggested price" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3iu-Nt-BaA">
+                                        <rect key="frame" x="20" y="347.5" width="374" height="26.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -338,8 +338,8 @@
                                             <action selector="mail:" destination="2p1-Fo-47T" eventType="touchUpInside" id="rEb-rN-sKv"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOI-Sh-dLL">
-                                        <rect key="frame" x="20" y="534" width="374" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOI-Sh-dLL">
+                                        <rect key="frame" x="20" y="481" width="374" height="83"/>
                                         <color key="backgroundColor" red="0.32549019610000002" green="0.40784313729999999" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="VIA PHONE">
                                             <color key="titleColor" red="0.82745098039999998" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1241,7 +1241,7 @@
                             <constraint firstItem="KK2-wC-N37" firstAttribute="leading" secondItem="DNU-tW-lbH" secondAttribute="leading" constant="20" id="YRV-Yt-yxf"/>
                             <constraint firstItem="Vf3-B4-Im0" firstAttribute="top" secondItem="KK2-wC-N37" secondAttribute="bottom" constant="50" id="a83-Qg-nbd"/>
                             <constraint firstItem="DNU-tW-lbH" firstAttribute="trailing" secondItem="3KZ-hL-U2Q" secondAttribute="trailing" constant="30" id="eqd-Yk-jib"/>
-                            <constraint firstItem="EUw-aB-aPs" firstAttribute="top" secondItem="Vf3-B4-Im0" secondAttribute="bottom" constant="242" id="hma-Yr-x75"/>
+                            <constraint firstItem="EUw-aB-aPs" firstAttribute="top" relation="lessThanOrEqual" secondItem="Vf3-B4-Im0" secondAttribute="bottom" constant="242" id="hma-Yr-x75"/>
                             <constraint firstItem="DNU-tW-lbH" firstAttribute="trailing" secondItem="1gf-5x-uwa" secondAttribute="trailing" constant="157" id="jv1-5T-AqR"/>
                             <constraint firstItem="KK2-wC-N37" firstAttribute="top" secondItem="acm-98-gIy" secondAttribute="bottom" constant="8" id="lwd-Xn-Oky"/>
                             <constraint firstItem="3KZ-hL-U2Q" firstAttribute="leading" secondItem="DNU-tW-lbH" secondAttribute="leading" constant="30" id="n66-rE-eP1"/>
@@ -1874,7 +1874,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="JXY-wa-L6D" firstAttribute="trailing" secondItem="JAt-PW-z4N" secondAttribute="trailing" constant="25" id="2GH-ix-5hg"/>
+                            <constraint firstItem="JXY-wa-L6D" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="JAt-PW-z4N" secondAttribute="trailing" constant="25" id="2GH-ix-5hg"/>
                             <constraint firstItem="JAt-PW-z4N" firstAttribute="leading" secondItem="DEM-dC-m8b" secondAttribute="trailing" constant="250.5" id="3GQ-Fg-hW4"/>
                             <constraint firstItem="jA5-0Y-lKl" firstAttribute="trailing" secondItem="HWT-5x-1T2" secondAttribute="trailing" id="5ez-R8-9PR"/>
                             <constraint firstItem="f8y-b0-1Ri" firstAttribute="leading" secondItem="DEM-dC-m8b" secondAttribute="leading" id="9KQ-yH-rDP"/>
@@ -2828,9 +2828,8 @@
         <image name="turned_in-24px" width="20" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="g1O-Aw-n9S"/>
         <segue reference="oZE-BK-G09"/>
-        <segue reference="JCX-xi-z3i"/>
+        <segue reference="0Ca-fF-7IJ"/>
         <segue reference="Klx-9D-f2F"/>
         <segue reference="PSc-Yt-uX1"/>
     </inferredMetricsTieBreakers>

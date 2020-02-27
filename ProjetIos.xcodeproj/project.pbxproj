@@ -10,6 +10,7 @@
 		31274D752399AE4E009793C4 /* detailsMyPartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31274D742399AE4E009793C4 /* detailsMyPartsViewController.swift */; };
 		313545832390ED44007E9845 /* AddPartsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313545822390ED44007E9845 /* AddPartsController.swift */; };
 		314D817A23CCDF960043B938 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314D817923CCDF960043B938 /* ProfileEditViewController.swift */; };
+		31756C9A24071AD4005132F2 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31756C9924071AD4005132F2 /* ImagePickerManager.swift */; };
 		31E675C023CEC60D00D1F1AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31E675BF23CEC60C00D1F1AA /* GoogleService-Info.plist */; };
 		31EB31F2238F035F000D4653 /* Profile2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EB31F1238F035F000D4653 /* Profile2Controller.swift */; };
 		31EB31F4238F0E06000D4653 /* ListPartsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EB31F3238F0E06000D4653 /* ListPartsController.swift */; };
@@ -66,6 +67,7 @@
 		31274D742399AE4E009793C4 /* detailsMyPartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailsMyPartsViewController.swift; sourceTree = "<group>"; };
 		313545822390ED44007E9845 /* AddPartsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPartsController.swift; sourceTree = "<group>"; };
 		314D817923CCDF960043B938 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
+		31756C9924071AD4005132F2 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		31E675BF23CEC60C00D1F1AA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		31EB31F1238F035F000D4653 /* Profile2Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile2Controller.swift; sourceTree = "<group>"; };
 		31EB31F3238F0E06000D4653 /* ListPartsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPartsController.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				31F0C65A23AD2E9D007C9FDA /* Server.swift */,
 				31F4A23523AEC0EE00E64EEF /* ContactViewController.swift */,
 				31F140AF23BAC67C007BF4B4 /* RegistrationViewController.swift */,
+				31756C9924071AD4005132F2 /* ImagePickerManager.swift */,
 			);
 			path = ProjetIos;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				31F65DBC238769EE003B1CE1 /* CarParts.swift in Sources */,
 				31F0C65B23AD2E9D007C9FDA /* Server.swift in Sources */,
 				313545832390ED44007E9845 /* AddPartsController.swift in Sources */,
+				31756C9A24071AD4005132F2 /* ImagePickerManager.swift in Sources */,
 				31EB31F2238F035F000D4653 /* Profile2Controller.swift in Sources */,
 				31ED29192390293600DA56BC /* MyCartController.swift in Sources */,
 				31F65DB6238764CA003B1CE1 /* HomeController.swift in Sources */,
@@ -682,7 +686,9 @@
 			baseConfigurationReference = 155EC3FDD7EF93087749F9B3 /* Pods-ProjetIos.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ProjetIos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -690,6 +696,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jawheriheb.ProjetIos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -700,7 +707,9 @@
 			baseConfigurationReference = E4D1ABF2EE54178271B68973 /* Pods-ProjetIos.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ProjetIos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -708,6 +717,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jawheriheb.ProjetIos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -47,13 +47,16 @@ class AddPartsController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     }
     
     @IBAction func addImage(_ sender: Any) {
-        let myPickerController = UIImagePickerController()
+        /*let myPickerController = UIImagePickerController()
         myPickerController.delegate = self;
         myPickerController.sourceType =  UIImagePickerController.SourceType.photoLibrary
-        self.present(myPickerController, animated: true, completion: nil)
+        self.present(myPickerController, animated: true, completion: nil)*/
+        ImagePickerManager().pickImage(self){ image in
+            print("//here is the image")
+        }
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
+    /*func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
     {
         guard let image_data = info[.originalImage] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
@@ -63,7 +66,7 @@ class AddPartsController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
         let imageStr = imageData.base64EncodedString()
         //print(imageStr)
         self.dismiss(animated: true, completion: nil)
-    }
+    }*/
     
     @IBAction func addPart(_ sender: Any) {
         let imageData:Data = (image.image?.pngData()!)!
