@@ -21,10 +21,10 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
             UIAlertAction in
             self.openCamera()
         }
-        let galleryAction = UIAlertAction(title: "Gallery", style: .default){
+        /*let galleryAction = UIAlertAction(title: "Gallery", style: .default){
             UIAlertAction in
             self.openGallery()
-        }
+        }*/
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){
             UIAlertAction in
         }
@@ -32,7 +32,7 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
         // Add the actions
         picker.delegate = self
         alert.addAction(cameraAction)
-        alert.addAction(galleryAction)
+        //alert.addAction(galleryAction)
         alert.addAction(cancelAction)
         alert.popoverPresentationController?.sourceView = self.viewController!.view
         viewController.present(alert, animated: true, completion: nil)

@@ -60,7 +60,7 @@ class ProfileController: UIViewController {
         }
         
         
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 15, height: 15))
+       /* let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 15, height: 15))
         let image = UIImage(named: "mail")
         imageView.image = image
         mail.leftView = imageView
@@ -70,7 +70,7 @@ class ProfileController: UIViewController {
         let image2 = UIImage(named: "password")
         imageView2.image = image2
         password.leftView = imageView2
-        password.leftViewMode = .always
+        password.leftViewMode = .always*/
        
         // Do any additional setup after loading the view.
     }

@@ -47,15 +47,66 @@ class AddPartsController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     }
     
     @IBAction func addImage(_ sender: Any) {
+        /*let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+            self.openCamera()
+        }))
+
+        /*alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
+            self.openGallery()
+        }))*/
+
+        alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
+
+        self.present(alert, animated: true, completion: nil)
         /*let myPickerController = UIImagePickerController()
         myPickerController.delegate = self;
         myPickerController.sourceType =  UIImagePickerController.SourceType.photoLibrary
         self.present(myPickerController, animated: true, completion: nil)*/
-        ImagePickerManager().pickImage(self){ image in
-            print("//here is the image")
+ */
+        ImagePickerManager().pickImage(self){ images in
+            self.image.image = images
         }
     }
-    
+    /*func openCamera()
+    {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerController.SourceType.camera
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        else
+        {
+            let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    func openGallery()
+    {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary){
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = true
+            imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        else
+        {
+            let alert  = UIAlertController(title: "Warning", message: "You don't have permission to access gallery.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[.originalImage] as? UIImage {
+            // imageViewPic.contentMode = .scaleToFill
+            image.image = pickedImage
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
     /*func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
     {
         guard let image_data = info[.originalImage] as? UIImage else {
@@ -66,12 +117,13 @@ class AddPartsController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
         let imageStr = imageData.base64EncodedString()
         //print(imageStr)
         self.dismiss(animated: true, completion: nil)
-    }*/
+    }*/*/
     
     @IBAction func addPart(_ sender: Any) {
         let imageData:Data = (image.image?.pngData()!)!
         let imageStr = imageData.base64EncodedString()
-        let owner = "Jawhera@yahoo.fr"
+        //let owner = "Jawhera@yahoo.fr"
+        let owner = UserDefaults.standard.string(forKey: "user")
         let param = ["username" : owner,"name" : name.text! , "refrence" : referance.text! , "Type":type, "tag_description" : desc.text!, "other1":other1.text!+","+other1Content.text!,"other2":other2.text!+","+other2Content.text!,"other3":other3.text!+","+other3Content.text!,"String_image": " "]
        print(param)
         
